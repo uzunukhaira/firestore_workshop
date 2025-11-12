@@ -14,7 +14,6 @@ class _TodoPageState extends State<TodoPage> {
     'todos',
   );
 
-  // Tambah todo baru
   Future<void> _addTodo() async {
     final String text = _controller.text.trim();
     if (text.isNotEmpty) {
@@ -23,12 +22,10 @@ class _TodoPageState extends State<TodoPage> {
     }
   }
 
-  // Hapus todo
   Future<void> _deleteTodo(String id) async {
     await _todos.doc(id).delete();
   }
 
-  // Ubah status selesai
   Future<void> _toggleDone(String id, bool currentValue) async {
     await _todos.doc(id).update({'done': !currentValue});
   }
@@ -42,7 +39,6 @@ class _TodoPageState extends State<TodoPage> {
       ),
       body: Column(
         children: [
-          // Input tambah todo
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
@@ -65,7 +61,6 @@ class _TodoPageState extends State<TodoPage> {
             ),
           ),
 
-          // Menampilkan todo dari Firestore
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
               stream: _todos.snapshots(),
