@@ -20,7 +20,6 @@ class _TodoPageState extends State<TodoPage> {
   DateTime? _startDate;
   DateTime? _endDate;
 
-  /// Fungsi menentukan status berdasarkan tanggal
   String _getAutoStatus(DateTime start, DateTime end) {
     final now = DateTime.now();
     if (now.isBefore(start)) return 'Belum dimulai';
@@ -28,7 +27,6 @@ class _TodoPageState extends State<TodoPage> {
     return 'Progres';
   }
 
-  /// Popup tambah / edit to-do
   Future<void> _showTodoDialog({
     String? id,
     String? currentTask,
@@ -157,7 +155,6 @@ class _TodoPageState extends State<TodoPage> {
     );
   }
 
-  /// Hapus to-do
   Future<void> _deleteTodo(String id) async {
     await _todos.doc(id).delete();
   }
